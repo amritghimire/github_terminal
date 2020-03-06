@@ -30,7 +30,10 @@ A github user friendly command line client
 Features
 --------
 
-* TODO
+- [ ] Create an issue
+- [ ] List all pull requests.
+- [ ] Create a pull request.
+
 
 Credits
 -------
