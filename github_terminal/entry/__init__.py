@@ -14,5 +14,7 @@ class Entry:
             return transform(default)
         if argument and self.args.get(argument):
             return transform(self.args.get(argument))
-        response = transform(input(f'{message} [{default}]'))
+        response = transform(
+            input('{message} [{default}]'.format(message=message,
+                                                 default=default)))
         return response if response else transform(default)
