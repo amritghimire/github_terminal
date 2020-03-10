@@ -27,10 +27,13 @@ A github user friendly command line client
 * Documentation: https://github-terminal.readthedocs.io.
 
 
-Features
+Features/ TODO
 --------
 
-* TODO
+-  Create an issue
+-  List all pull requests.
+- Create a pull request.
+
 
 Credits
 -------
