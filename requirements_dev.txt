@@ -11,3 +11,4 @@ twine==1.14.0 # pyup: ignore
 pytest==5.4.1
 pytest-runner==5.2
 
+gql==0.4.0

@@ -10,7 +10,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = ['gql>=0.4.0', 'moment>=0.8.2']
 
 setup_requirements = ['pytest-runner', ]
 
