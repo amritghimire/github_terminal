@@ -31,9 +31,31 @@ def main():
     parser.add_argument("-d",
                         "--description",
                         help="Description of issue or PR or repo.")
+    parser.add_argument("-c", "--config", help="Configuration file to use.")
+    parser.add_argument("-T",
+                        "--token",
+                        help="Personal access token for github.")
+    parser.add_argument("-u", "--username", help="Username of the user")
+    parser.add_argument("-a",
+                        "--assignee",
+                        help="Filter by assignee or set assignee")
+    parser.add_argument("-A", "--author", help="Filter by or set author")
+    parser.add_argument("-l",
+                        "--label",
+                        help="Filter or set label separated by comma")
+    parser.add_argument("-L", "--limit", help="Maximum number to fetch")
+    parser.add_argument("-s", "--state", help="Filter by state")
+    parser.add_argument(
+        "-S",
+        "--since",
+        help="List issues that have been updated at or after the given date."
+        " (You can also use value like 2 weeks ago)")
+    parser.add_argument("-r",
+                        "--repo",
+                        help="Repository to perform action on.")
     args = parser.parse_args()
-    category_specific_action = handle_category_action(args.category)
-    category_specific_action(args.action, args)
+    category_specific_action = handle_category_action(args)
+    category_specific_action(args)
     return 0
 
 
