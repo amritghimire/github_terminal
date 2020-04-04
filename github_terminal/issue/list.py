@@ -14,7 +14,7 @@ def list_issues(args):
     logger.debug(
         "Listing the issues from github repository {repo}".format(repo=repo))
     owner, repository = repo.split('/')
-    limit = args.limit if args.limit else 10
+    limit = int(args.limit) if args.limit else 10
     logger.debug("Limiting the count to {limit}".format(limit=limit))
     filters = {}
     if args.assignee:
@@ -54,11 +54,11 @@ def list_issues(args):
         label = ', '.join([node['name'] for node in issue["labels"]["nodes"]])
         if label:
             label = '({})'.format(label)
-        logger.info('{color}{number:5}{end} {title:60} {labels}'.format(
+        logger.info('{color}{number:5}{end} {title:80} {labels}'.format(
             color=bcolors.OKGREEN,
             number='#' + str(issue['number']),
             end=bcolors.ENDC,
-            title=issue['title'],
+            title=issue['title'][:80] + ('...' if len(issue['title']) > 80 else ''),
             labels=label))
     if not shown:
         logger.info('{color}No issues found{end}'.format(color=bcolors.WARNING,

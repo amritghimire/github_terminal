@@ -17,7 +17,7 @@ def list_pr(args):
     configuration = Configuration(args)
     repo = configuration.get_repository()
     logger.debug("Listing the pull requests from github repository {repo}".format(repo=repo))
-    limit = args.limit if args.limit else 10
+    limit = int(args.limit) if args.limit else 10
     logger.debug("Limiting the count to {limit}".format(limit=limit))
     query = "repo:{repo} type:pr".format(repo=repo)
     if args.assignee:
@@ -55,12 +55,12 @@ def list_pr(args):
         label = ', '.join([node['name'] for node in pr["labels"]["nodes"]])
         if label:
             label = '({})'.format(label)
-        logger.info('{color}{number:5}{end} {title:60} {file:5} file changed.  {labels}'.format(
+        logger.info('{color}{number:5}{end} {title:83} {file:5} file changed.  {labels}'.format(
             color=bcolors.OKGREEN,
             number='#' + str(pr['number']),
             end=bcolors.ENDC,
             file=pr['changedFiles'],
-            title=pr['title'],
+            title=pr['title'][:80] + ('...' if len(pr['title']) > 80 else ''),
             labels=label))
     if not shown:
         logger.info('{color}No pull requests found{end}'.format(color=bcolors.WARNING,
