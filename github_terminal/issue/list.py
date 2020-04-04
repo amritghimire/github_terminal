@@ -7,7 +7,7 @@ from ..request.query.issue import LIST_ISSUES
 
 
 def list_issues(args):
-    """Create a new issue from the given parameter."""
+    """List the issues from the given parameter."""
     logger = Logger(args.verbose, args.quiet)
     configuration = Configuration(args)
     repo = configuration.get_repository()
@@ -54,12 +54,12 @@ def list_issues(args):
         label = ', '.join([node['name'] for node in issue["labels"]["nodes"]])
         if label:
             label = '({})'.format(label)
-            logger.info('{color}{number:5}{end} {title:60} {labels}'.format(
-                color=bcolors.OKGREEN,
-                number='#' + str(issue['number']),
-                end=bcolors.ENDC,
-                title=issue['title'],
-                labels=label))
+        logger.info('{color}{number:5}{end} {title:60} {labels}'.format(
+            color=bcolors.OKGREEN,
+            number='#' + str(issue['number']),
+            end=bcolors.ENDC,
+            title=issue['title'],
+            labels=label))
     if not shown:
         logger.info('{color}No issues found{end}'.format(color=bcolors.WARNING,
                                                          end=bcolors.ENDC))

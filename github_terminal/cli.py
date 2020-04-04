@@ -39,6 +39,9 @@ def main():
     parser.add_argument("-a",
                         "--assignee",
                         help="Filter by assignee or set assignee")
+    parser.add_argument("-b",
+                        "--base",
+                        help="Filter by base branch the pull request are being merged to (ONLY FOR PR AND REPO)")
     parser.add_argument("-A", "--author", help="Filter by or set author")
     parser.add_argument("-l",
                         "--label",
